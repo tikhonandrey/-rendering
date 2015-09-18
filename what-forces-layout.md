@@ -81,6 +81,8 @@ All of the below properties or methods, when requested/called in JavaScript, wil
 
 ## Appendix
 
+* If layout is forced, style must be recalculated first. So forced layout triggers both operations. Their costs are very dependent on the content/situation, but typically both operations are similar in cost.
+
 ##### Other browsers
 * [Tony Gentilcore's 2011 Layout Triggering List](http://gent.ilcore.com/2011/03/how-not-to-trigger-layout-in-webkit.html) was for WebKit and generally aligns with the above. 
 * Modern WebKit's instances of forced layout: [`updateLayoutIgnorePendingStylesheets` - GitHub search - WebKit/WebKit ](https://github.com/WebKit/webkit/search?q=updateLayoutIgnorePendingStylesheets&utf8=%E2%9C%93)
