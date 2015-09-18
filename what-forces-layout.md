@@ -1,6 +1,6 @@
-# What forces layout
+# What forces layout / reflow
 
-All of the below properties or methods, when requested/called in JavaScript, will force the browser to synchronously calculate the style and layout. This is also called reflow or layout thrashing, and is common performance bottleneck.
+All of the below properties or methods, when requested/called in JavaScript, will trigger the browser to synchronously calculate the style and layout. This is also called reflow or layout thrashing, and is common performance bottleneck. [Avoiding layout thrashing — Web Fundamentals](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing?hl=en)
 
 ### Element
 
@@ -10,13 +10,14 @@ All of the below properties or methods, when requested/called in JavaScript, wil
 * `elem.getClientRects()`, `elem.getBoundingClientRect()`
 
 ##### Scroll stuff
-* `elem.scrollWidth`, `elem.scrollHeight`
-* `elem.scrollLeft`, `elem.scrollTop // also setting them`
-* `elem.scrollIntoView()`, `elem.scrollIntoViewIfNeeded()`  
 * `elem.scrollBy()`, `elem.scrollTo()`
+* `elem.scrollIntoView()`, `elem.scrollIntoViewIfNeeded()`  
+* `elem.scrollWidth`, `elem.scrollHeight`
+* `elem.scrollLeft`, `elem.scrollTop` also, setting them
+
 
 ##### Focus
-* `elem.focus()`  can trigger a *double* forced layout`  ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/dom/Element.cpp&q=updateLayoutIgnorePendingStylesheets%20-f:out%20-f:test&sq=package:chromium&l=2369&ct=rc&cd=4&dr=C))
+* `elem.focus()`  can trigger a *double* forced layout ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/dom/Element.cpp&q=updateLayoutIgnorePendingStylesheets%20-f:out%20-f:test&sq=package:chromium&l=2369&ct=rc&cd=4&dr=C))
 
 ##### Also…
 * `elem.computedRole`, `elem.computedName`  
@@ -36,7 +37,7 @@ All of the below properties or methods, when requested/called in JavaScript, wil
 
 `window.getComputedStyle()` will typically force style recalc ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/dom/Document.cpp&sq=package:chromium&type=cs&l=1860&q=updateLayoutTreeForNodeIfNeeded))
 
-`window.getComputedStyle()` will force layout, as well, if one of the following: 
+`window.getComputedStyle()` will force layout, as well, if any of the following is true: 
 
 1. The element is in a shadow tree
 1. There are media queries (viewport-related ones). Specifically, one of the following: ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/css/MediaQueryExp.cpp&sq=package:chromium&type=cs&l=163&q=MediaQueryExp::isViewportDependent))
