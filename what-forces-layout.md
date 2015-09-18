@@ -69,6 +69,11 @@ All of the below properties or methods, when requested/called in JavaScript, wil
 
 * `range.getClientRects()`, `range.getBoundingClientRect()`
 
+### SVG
+
+* Quite a lot; haven't made an exhaustive list , but [Tony Gentilcore's 2011 Layout Triggering List](http://gent.ilcore.com/2011/03/how-not-to-trigger-layout-in-webkit.html) pointed to a few.
+* 
+
 ### contenteditable
   
 * Lots & lots of stuff, …including copying an image to clipboard ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/editing/Editor.cpp&sq=package:chromium&l=420&dr=C&rcl=1442532378))
