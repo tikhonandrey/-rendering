@@ -1,6 +1,6 @@
 # What forces layout / reflow
 
-All of the below properties or methods, when requested/called in JavaScript, will trigger the browser to synchronously calculate the style and layout. This is also called reflow or layout thrashing, and is common performance bottleneck. [Avoiding layout thrashing — Web Fundamentals](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing?hl=en)
+All of the below properties or methods, when requested/called in JavaScript, will trigger the browser to synchronously calculate the style and layout. This is also called reflow or [layout thrashing](http://www.kellegous.com/j/2013/01/26/layout-performance/), and is common performance bottleneck. 
 
 ### Element
 
@@ -92,6 +92,7 @@ All of the below properties or methods, when requested/called in JavaScript, wil
 
 #### More on forced layout
 
+* [Avoiding layout thrashing — Web Fundamentals](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing?hl=en)
 * [Fixing Layout thrashing in the real world | Matt Andrews](https://mattandre.ws/2014/05/really-fixing-layout-thrashing/)
 * [Timeline demo: Diagnosing forced synchronous layouts - Google Chrome](https://developer.chrome.com/devtools/docs/demos/too-much-layout)
 * [Preventing &apos;layout thrashing&apos; | Wilson Page](http://wilsonpage.co.uk/preventing-layout-thrashing/)
