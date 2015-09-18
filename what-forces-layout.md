@@ -23,16 +23,6 @@ All of the below properties or methods, when requested/called in JavaScript, wil
 * `elem.computedRole`, `elem.computedName`  
 * `elem.innerText` ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/dom/Element.cpp&q=updateLayoutIgnorePendingStylesheets%20-f:out%20-f:test&sq=package:chromium&l=2626&ct=rc&cd=4&dr=C))
 
-### Range
-
-* `range.getClientRects()`, `range.getBoundingClientRect()`
-
-### Mouse events
-
-* `mouseEvt.layerX`, `mouseEvt.layerY`, `mouseEvt.offsetX`, `mouseEvt.offsetY` ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/events/MouseRelatedEvent.cpp&q=f:mouserelatedevent%20computeRelativePosition&sq=package:chromium&type=cs&l=132))
-
-
-
 ### getComputedStyle 
 
 `window.getComputedStyle()` will typically force style recalc ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/dom/Document.cpp&sq=package:chromium&type=cs&l=1860&q=updateLayoutTreeForNodeIfNeeded))
@@ -55,10 +45,6 @@ All of the below properties or methods, when requested/called in JavaScript, wil
   * `motion-path`, `motion-offset`, `motion-rotation`
   * `x`, `y`, `rx`, `ry`
 
-### document
-
-* `doc.scrollingElement` only forces style
-
 ### window
 
 * `window.scrollX`, `window.scrollY`
@@ -68,7 +54,20 @@ All of the below properties or methods, when requested/called in JavaScript, wil
 
 ### Forms
 
+* `inputElem.focus()`
 * `inputElem.select()`, `textareaElem.select()` ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/html/HTMLTextFormControlElement.cpp&q=updateLayoutIgnorePendingStylesheets%20-f:out%20-f:test&sq=package:chromium&l=192&dr=C))
+
+### Mouse events
+
+* `mouseEvt.layerX`, `mouseEvt.layerY`, `mouseEvt.offsetX`, `mouseEvt.offsetY` ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/events/MouseRelatedEvent.cpp&q=f:mouserelatedevent%20computeRelativePosition&sq=package:chromium&type=cs&l=132))
+
+### document
+
+* `doc.scrollingElement` only forces style
+
+### Range
+
+* `range.getClientRects()`, `range.getBoundingClientRect()`
 
 ### contenteditable
   
