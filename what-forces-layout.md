@@ -83,11 +83,12 @@ All of the below properties or methods, when requested/called in JavaScript, wil
 
 * If layout is forced, style must be recalculated first. So forced layout triggers both operations. Their costs are very dependent on the content/situation, but typically both operations are similar in cost.
 
-##### Cross-browser story
+##### Cross-browser 
 * The above data was built by reading the Blink source, so it's true for Chrome, Opera, and most android browsers.
 * [Tony Gentilcore's Layout Triggering List](http://gent.ilcore.com/2011/03/how-not-to-trigger-layout-in-webkit.html) was for 2011 WebKit and generally aligns with the above. 
-* Modern WebKit's instances of forced layout: [`updateLayoutIgnorePendingStylesheets` - GitHub search - WebKit/WebKit ](https://github.com/WebKit/webkit/search?q=updateLayoutIgnorePendingStylesheets&utf8=%E2%9C%93)
+* Modern WebKit's instances of forced layout are mostly consistent: [`updateLayoutIgnorePendingStylesheets` - GitHub search - WebKit/WebKit ](https://github.com/WebKit/webkit/search?q=updateLayoutIgnorePendingStylesheets&utf8=%E2%9C%93)
 * Gecko's reflow appears to be requested via FrameNeedsReflow. Results: [`FrameNeedsReflow` - mozilla-central search](http://lxr.mozilla.org/mozilla-central/search?string=FrameNeedsReflow&find=&findi=%5C.c&filter=%5E%5B%5E%5C0%5D*%24&hitlimit=&tree=mozilla-central)
+* No concrete data on Edge/IE, but it should fall roughly in line, as the return values for these properties are spec'd. What would differ is the amount of clever optimization.
 
 ##### Browsing the Chromium source:
 * forced layout (and style recalc): [`updateLayoutIgnorePendingStylesheets` - Chromium Code Search](https://code.google.com/p/chromium/codesearch#search/&q=updateLayoutIgnorePendingStylesheets%20-f:out%20-f:test&sq=package:chromium&type=cs)
