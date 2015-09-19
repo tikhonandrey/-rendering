@@ -94,6 +94,10 @@ All of the below properties or methods, when requested/called in JavaScript, wil
 * forced layout (and style recalc): [`updateLayoutIgnorePendingStylesheets` - Chromium Code Search](https://code.google.com/p/chromium/codesearch#search/&q=updateLayoutIgnorePendingStylesheets%20-f:out%20-f:test&sq=package:chromium&type=cs)
 * forced style recalc: [`updateLayoutTree` - Chromium Code Search](https://code.google.com/p/chromium/codesearch#search/&q=updateLayoutTree%20-f:out&p=1&sq=package:chromium&type=cs)
 
+#### CSS Triggers
+
+[CSS Triggers](http://csstriggers.com/) is a related resource and all about what operations are required to happen in the browser lifecycle as a result of setting/changing a given CSS value. It's a great resource.  The above list, however, are all about what forces the purple/green/darkgreen circles synchronously from JavaScript. 
+
 #### More on forced layout
 
 * [Avoiding layout thrashing — Web Fundamentals](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing?hl=en)
