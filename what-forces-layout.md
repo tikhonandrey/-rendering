@@ -88,6 +88,10 @@ All of the below properties or methods, when requested/called in JavaScript, wil
   1. Use DevTools Timeline to see where this happens. You may be surprised to see how often your app code and library code hits this.
   1. Batch your writes & reads to the DOM (via [FastDOM](https://github.com/wilsonpage/fastdom) or a virtual DOM implementation). Read your metrics at the begininng of the frame (very very start of `rAF`, scroll handler, etc), when the numbers are still identical to the last time layout was done. 
 
+<center>
+![image](https://cloud.githubusercontent.com/assets/39191/10144107/9fae0b48-65d0-11e5-8e87-c9a8e999b064.png)
+_Timeline trace of The Guardian. Outbrain is forcing layout repeatedly, probably in a loop._
+</center>
 
 ##### Cross-browser 
 * The above data was built by reading the Blink source, so it's true for Chrome, Opera, and most android browsers.
