@@ -1,6 +1,6 @@
 # What forces layout / reflow
 
-All of the below properties or methods, when requested/called in JavaScript, will trigger the browser to synchronously calculate the style and layout. This is also called reflow or [layout thrashing](http://www.kellegous.com/j/2013/01/26/layout-performance/), and is common performance bottleneck. 
+All of the below properties or methods, when requested/called in JavaScript, will trigger the browser to synchronously calculate the style and layout*. This is also called reflow or [layout thrashing](http://www.kellegous.com/j/2013/01/26/layout-performance/), and is common performance bottleneck. 
 
 ### Element
 
@@ -79,9 +79,15 @@ All of the below properties or methods, when requested/called in JavaScript, wil
 * Lots & lots of stuff, …including copying an image to clipboard ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/editing/Editor.cpp&sq=package:chromium&l=420&dr=C&rcl=1442532378))
   
 
-## Appendix
+## *Appendix
 
+* Reflow only has a cost if the document has changed and invalidated the style or layout. Typically, this is because the DOM was changed (classes modified, nodes added/removed, even adding a psuedo-class like :focus).
 * If layout is forced, style must be recalculated first. So forced layout triggers both operations. Their costs are very dependent on the content/situation, but typically both operations are similar in cost.
+* What should you do about all this? Well, the `More on forced layout` section below covers everything in more detail, but the short version is: 
+  1. `for` loops that force layout & change the DOM are the worst, avoid them. 
+  1. Use DevTools Timeline to see where this happens. You may be surprised to see how often your app code and library code hits this.
+  1. Batch your writes & reads to the DOM (via [FastDOM](https://github.com/wilsonpage/fastdom) or a virtual DOM implementation). Read your metrics at the begininng of the frame (very very start of `rAF`, scroll handler, etc), when the numbers are still identical to the last time layout was done. 
+
 
 ##### Cross-browser 
 * The above data was built by reading the Blink source, so it's true for Chrome, Opera, and most android browsers.
