@@ -17,33 +17,33 @@ All of the below properties or methods, when requested/called in JavaScript, wil
 
 
 ##### Focus
-* `elem.focus()`  can trigger a *double* forced layout ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/dom/Element.cpp&q=updateLayoutIgnorePendingStylesheets%20-f:out%20-f:test&sq=package:chromium&l=2369&ct=rc&cd=4&dr=C))
+* `elem.focus()`  can trigger a *double* forced layout ([source](https://cs.chromium.org/chromium/src/third_party/WebKit/Source/core/dom/Element.cpp?q=updateLayoutIgnorePendingStylesheets+-f:out+-f:test&sq=package:chromium&dr=C)&l=2923)
 
 ##### Also…
 * `elem.computedRole`, `elem.computedName`  
-* `elem.innerText` ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/dom/Element.cpp&q=updateLayoutIgnorePendingStylesheets%20-f:out%20-f:test&sq=package:chromium&l=2626&ct=rc&cd=4&dr=C))
+* `elem.innerText` ([source](https://cs.chromium.org/chromium/src/third_party/WebKit/Source/core/dom/Element.cpp?q=updateLayoutIgnorePendingStylesheets+-f:out+-f:test&sq=package:chromium&dr=C)&l=3440))
 
 ### getComputedStyle 
 
-`window.getComputedStyle()` will typically force style recalc ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/dom/Document.cpp&sq=package:chromium&type=cs&l=1860&q=updateLayoutTreeForNodeIfNeeded))
+`window.getComputedStyle()` will typically force style recalc 
 
 `window.getComputedStyle()` will force layout, as well, if any of the following is true: 
 
 1. The element is in a shadow tree
-1. There are media queries (viewport-related ones). Specifically, one of the following: ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/css/MediaQueryExp.cpp&sq=package:chromium&type=cs&l=163&q=MediaQueryExp::isViewportDependent))
+1. There are media queries (viewport-related ones). Specifically, one of the following: ([source](https://cs.chromium.org/chromium/src/third_party/WebKit/Source/core/css/MediaQueryExp.cpp?type=cs&q=f:MediaQueryExp.cpp+MediaQueryExp::IsViewportDependent&l=192))
   * `min-width`, `min-height`, `max-width`, `max-height`, `width`, `height`
   * `aspect-ratio`, `min-aspect-ratio`, `max-aspect-ratio`
-  * `device-pixel-ratio`, `resolution`, `orientation` 
-1. The property requested is one of the following:  ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/css/CSSComputedStyleDeclaration.cpp&sq=package:chromium&l=457&dr=C&q=isLayoutDependent))
+  * `device-pixel-ratio`, `resolution`, `orientation` , `min-device-pixel-ratio`, `max-device-pixel-ratio`
+1. The property requested is one of the following:  ([source](https://cs.chromium.org/chromium/src/third_party/WebKit/Source/core/css/CSSComputedStyleDeclaration.cpp?dr=C&q=f:CSSComputedStyleDeclaration.cpp+isLayoutDependent&sq=package:chromium))
   * `height`, `width`
   * `top`, `right`, `bottom`, `left`
   * `margin` [`-top`, `-right`, `-bottom`, `-left`, or *shorthand*] only if the margin is fixed.
   * `padding` [`-top`, `-right`, `-bottom`, `-left`, or *shorthand*] only if the padding is fixed.
   * `transform`, `transform-origin`, `perspective-origin`
   * `translate`, `rotate`, `scale`
-  * `webkit-filter`, `backdrop-filter`
-  * `motion-path`, `motion-offset`, `motion-rotation`
-  * `x`, `y`, `rx`, `ry`
+  * `grid`, `grid-template`, `grid-template-columns`, `grid-template-rows`
+  * `perspective-origin`
+  * These items were previously in the list but appear to not be any longer (as of Feb 2018): `motion-path`, `motion-offset`, `motion-rotation`, `x`, `y`, `rx`, `ry`
 
 ### window
 
@@ -55,11 +55,11 @@ All of the below properties or methods, when requested/called in JavaScript, wil
 ### Forms
 
 * `inputElem.focus()`
-* `inputElem.select()`, `textareaElem.select()` ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/html/HTMLTextFormControlElement.cpp&q=updateLayoutIgnorePendingStylesheets%20-f:out%20-f:test&sq=package:chromium&l=192&dr=C))
+* `inputElem.select()`, `textareaElem.select()`
 
 ### Mouse events
 
-* `mouseEvt.layerX`, `mouseEvt.layerY`, `mouseEvt.offsetX`, `mouseEvt.offsetY` ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/events/MouseRelatedEvent.cpp&q=f:mouserelatedevent%20computeRelativePosition&sq=package:chromium&type=cs&l=132))
+* `mouseEvt.layerX`, `mouseEvt.layerY`, `mouseEvt.offsetX`, `mouseEvt.offsetY` ([source](https://cs.chromium.org/chromium/src/third_party/WebKit/Source/core/events/MouseEvent.cpp?type=cs&q=f:Mouse+f:cpp+::computeRelativePosition&sq=package:chromium&l=517))
 
 ### document
 
@@ -76,7 +76,7 @@ All of the below properties or methods, when requested/called in JavaScript, wil
 
 ### contenteditable
   
-* Lots & lots of stuff, …including copying an image to clipboard ([source](https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/editing/Editor.cpp&sq=package:chromium&l=420&dr=C&rcl=1442532378))
+* Lots & lots of stuff, …including copying an image to clipboard ([source](https://cs.chromium.org/search/?q=UpdateStyleAndLayoutIgnorePendingStylesheets+file:%5Esrc/third_party/WebKit/Source/core/editing/+package:%5Echromium$&type=cs))
   
 
 ## *Appendix
@@ -101,8 +101,8 @@ All of the below properties or methods, when requested/called in JavaScript, wil
 * No concrete data on Edge/IE, but it should fall roughly in line, as the return values for these properties are spec'd. What would differ is the amount of clever optimization.
 
 ##### Browsing the Chromium source:
-* forced layout (and style recalc): [`UpdateStyleAndLayoutIgnorePendingStylesheets` - Chromium Code Search](https://cs.chromium.org/search/?q=UpdateStyleAndLayoutIgnorePendingStylesheets&type=cs)
-* forced style recalc: [`updateLayoutTree` - Chromium Code Search](https://code.google.com/p/chromium/codesearch#search/&q=updateLayoutTree%20-f:out&p=1&sq=package:chromium&type=cs)
+* forced layout (and style recalc): [`UpdateStyleAndLayoutIgnorePendingStylesheets` - Chromium Code Search](https://cs.chromium.org/search/?q=UpdateStyleAndLayoutIgnorePendingStylesheets+-f:out+-f:test&type=cs)
+* forced style recalc: [`UpdateStyleAndLayoutTreeIgnorePendingStylesheets` - Chromium Code Search](https://cs.chromium.org/search/?q=UpdateStyleAndLayoutTreeIgnorePendingStylesheets++-f:out+-f:test&type=cs)
 
 #### CSS Triggers
 
@@ -122,3 +122,7 @@ All of the below properties or methods, when requested/called in JavaScript, wil
 * [Accelerated Rendering in Chrome](http://www.html5rocks.com/en/tutorials/speed/layers/)
 * [web performance for the curious](https://www.igvita.com/slides/2012/web-performance-for-the-curious/)
 * [Jank Free](http://jankfree.org/)
+
+-------------
+
+Updated slightly Feb 2018. Codesearch links and a few changes to relevant element properties.
