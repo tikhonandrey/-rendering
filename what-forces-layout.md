@@ -101,7 +101,7 @@ All of the below properties or methods, when requested/called in JavaScript, wil
 * No concrete data on Edge/IE, but it should fall roughly in line, as the return values for these properties are spec'd. What would differ is the amount of clever optimization.
 
 ##### Browsing the Chromium source:
-* forced layout (and style recalc): [`updateLayoutIgnorePendingStylesheets` - Chromium Code Search](https://code.google.com/p/chromium/codesearch#search/&q=updateLayoutIgnorePendingStylesheets%20-f:out%20-f:test&sq=package:chromium&type=cs)
+* forced layout (and style recalc): [`UpdateStyleAndLayoutIgnorePendingStylesheets` - Chromium Code Search](https://cs.chromium.org/search/?q=UpdateStyleAndLayoutIgnorePendingStylesheets&type=cs)
 * forced style recalc: [`updateLayoutTree` - Chromium Code Search](https://code.google.com/p/chromium/codesearch#search/&q=updateLayoutTree%20-f:out&p=1&sq=package:chromium&type=cs)
 
 #### CSS Triggers
